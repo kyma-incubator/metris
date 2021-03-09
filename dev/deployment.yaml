@@ -62,8 +62,11 @@ spec:
         - containerPort: 8080
           name: http
           protocol: TCP
-
-        ## readiness and liveness probe
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 10
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30

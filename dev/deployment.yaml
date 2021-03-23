@@ -21,6 +21,8 @@ spec:
     metadata:
       labels:
         app: metrisv2
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - image: ko://github.com/kyma-incubator/metris/cmd
@@ -60,8 +62,11 @@ spec:
         - containerPort: 8080
           name: http
           protocol: TCP
-
-        ## readiness and liveness probe
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 10
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30

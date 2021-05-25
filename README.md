@@ -1,3 +1,5 @@
+Archived: The code is in [control-plane](https://github.com/kyma-project/control-plane/tree/main/components/kyma-metrics-collector)
+
 ### Metris
 
 #### Description
